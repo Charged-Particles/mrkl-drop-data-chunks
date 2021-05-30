@@ -1,7 +1,7 @@
 // This file contains the logic used to generate the chunks of data.
 import { readFileSync, writeFileSync } from 'fs'
 
-const file = readFileSync('./mrkl-full.json').toString('utf-8')
+const file = readFileSync('./ionx-merkle-root.json').toString('utf-8')
 const allClaims = JSON.parse(file).claims
 
 const sortedAddresses: string[] = Object.keys(allClaims)
@@ -23,4 +23,3 @@ for (let i = 0; i < sortedAddresses.length; i += DESIRED_COHORT_SIZE) {
 }
 
 writeFileSync(`./chunks/mapping.json`, JSON.stringify(addressChunks))
-
